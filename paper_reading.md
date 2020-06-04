@@ -128,6 +128,26 @@ https://www.aclweb.org/anthology/P17-1152
 
 https://www.aclweb.org/anthology/D19-1631/
 
+###### 68. Membership Inference Attacks Against Machine Learning Models (2017)
+- なに
+    - 多クラス分類モデルをターゲットとした membership inference.
+- 先行研究とくらべてどうすごい
+    - membership inferenceをはじめて提唱した研究と思われる
+- 手法
+    - Target modelに実際の学習データが入力されたときの出力はhigh confidenceになるだろうという仮定にもとづく.
+    - まずデータ空間Sを探索し, target modelが高い確信度でクラスCkに分類するような部分空間Skを探す.
+    - 次に, Skからの標本をx(in)k, x(in)kに対するtarget modelの出力をy(in)kとし, (x(in)k, y(in)k)に"in"のラベルを貼る.
+    - さらにSkと離れた部分空間からの標本をx(out)k, x(out)kに対するtarget modelの出力をy(out)kとし, (x(out)k, y(out)k)に"out"のラベルを貼る.
+    - 上記をもとに, データ点およびtarget modelの出力値からin/outを推定する2クラス分類を解くモデルを構築し, これをattackerとする.
+- 検証
+    - 定量評価はattackerがtarget modelのtraining setに入っているデータとtest setに入っているデータを見分ける性能によって行なった.
+    - 各種データセットで検証. 画像とtableデータ. tableデータセットのうち1つは医療情報(Texas hospital stays).
+    - attackerは高いaccuracyとprecisionを達成した.
+    - また, attackerに本来のtarget modelのタスクを解かせるとかなり性能が悪く, attackerをtarget modelの学習データに強くoverfitさせることに成功していることも判明した.
+- 議論
+    - 多クラス分類モデルでさえあればこの方法でなんでも攻撃できてしまう.
+    
+https://ieeexplore.ieee.org/document/7958568
 
 
 ###### 67. Pre-training of Graph Augmented Transformers for Medication Recommendation (IJCAI 2019)
